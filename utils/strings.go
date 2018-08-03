@@ -13,7 +13,17 @@ func SnakePath(path string) string {
 	path = strings.Replace(path, "-", "_", -1)
 	path = strings.Replace(path, "/", "_", -1)
 	path = strings.Replace(path, ".", "_", -1)
-	return path
+	return strings.ToLower(path)
+}
+
+// BarPath 路径横杠形式 /Users/bill/gopath/src/web-clt/cmd/commands => cmd-commands
+func BarPath(path string) string {
+	currentpath, _ := os.Getwd()
+	path = strings.Replace(path, currentpath+"/", "", -1)
+	path = strings.Replace(path, "_", "-", -1)
+	path = strings.Replace(path, "/", "-", -1)
+	path = strings.Replace(path, ".", "-", -1)
+	return strings.ToLower(path)
 }
 
 // CamelCasePath 路径驼峰化 /Users/bill/gopath/src/web-clt/cmd/commands => CmdCommands

@@ -26,7 +26,8 @@ func AddModel(name string) error {
 	u.SetTemplateKV(map[string]string{
 		"projectName": newProjectName,
 		"modelName":   u.LCamelCasePath(name),
-		"model_name":  strings.ToLower(u.SnakePath(name)),
+		"model_name":  u.SnakePath(name),
+		"model-name":  u.BarPath(name),
 		"ModelName":   u.CamelCasePath(name),
 	})
 	u.Walk(templatesModelRoot, func(pathName string, info os.FileInfo, err error) error {
