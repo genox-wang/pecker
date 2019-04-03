@@ -29,7 +29,7 @@ func AddModel(name string) error {
 		"model_name":  u.SnakePath(name),
 		"model-name":  u.BarPath(name),
 		"ModelName":   u.CamelCasePath(name),
-		"MODEL_NAME":  strings.ToLower(u.SnakePath(name)),
+		"MODEL_NAME":  strings.ToUpper(u.SnakePath(name)),
 	})
 	u.Walk(templatesModelRoot, func(pathName string, info os.FileInfo, err error) error {
 		template := u.ReadFile(pathName)
